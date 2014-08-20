@@ -214,6 +214,4 @@ LC_NUMERIC="zh_CN.UTF-8"
 LC_TIME="zh_CN.UTF-8"
 LC_ALL="zh_CN.UTF-8"
 
-export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
-
 #. ~/dev/project/shell/powerline/powerline/bindings/zsh/powerline.zsh
