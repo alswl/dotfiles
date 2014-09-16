@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala autojump autoenv compleat urltools rvm npm vagrant go pip brew bower fabric docker gem redis-cli rsync sbt screen sudo tmux)
+plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala autojump autoenv compleat urltools rvm npm vagrant go pip brew bower fabric docker gem redis-cli rsync sbt screen sudo tmux colored-man)
 # virtualenvwrapper 
 
 source $ZSH/oh-my-zsh.sh
@@ -139,11 +139,13 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 	--userconfig=$HOME/.cnpmrc"""
 alias wo='workon'
 alias ta='tmux attach -t'
+alias gdf='git diff'
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
 alias -g H='| head'
 alias -g J='| json_pp | less'
+alias -g W='| wc -l'
 
 # }}}
 
@@ -197,6 +199,11 @@ bindkey "^[[20~" delete-char # F9 pass to tmux
 bindkey "^[[21~" delete-char # F10 pass to tmux
 bindkey "^[[23~" delete-char # F11 pass to tmux
 bindkey "[24~" delete-char # F12 pass to tmux
+
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # }}}
 
