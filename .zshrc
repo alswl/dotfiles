@@ -95,6 +95,7 @@ if [ `uname` = 'Darwin' ]; then
 elif [ `uname -s` = 'Linux' ] || [ `uname -o` = 'Cygwin' ]; then
 	alias ls="ls --color=auto"
 fi
+alias c='cat'
 alias ll='ls -l'
 alias llh='ls -lh'
 alias la='ls -a'
@@ -146,11 +147,22 @@ alias -g G='| grep --color=auto'
 alias -g H='| head'
 alias -g J='| json_pp | less'
 alias -g W='| wc -l'
+alias -g V='| vim -'
+if [ `uname` = 'Darwin' ]; then
+	alias -g C='| pbcopy'
+	alias -g P='pbpaste'
+fi
 
 # }}}
 
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
+hash -d dt="/Users/alswl/duitang/"
+hash -d japa="/Users/alswl/duitang/workspace/japa/"
+hash -d mandala="/Users/alswl/duitang/workspace/mandala/"
+hash -d faba="/Users/alswl/duitang/workspace/faba/"
+hash -d titan="/Users/alswl/duitang/workspace/titan/"
+hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
 # }}}
 
 # virtual wrapper {{{
