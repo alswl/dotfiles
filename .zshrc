@@ -165,6 +165,7 @@ hash -d mandala="/Users/alswl/duitang/workspace/mandala/"
 hash -d faba="/Users/alswl/duitang/workspace/faba/"
 hash -d titan="/Users/alswl/duitang/workspace/titan/"
 hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
+hash -d desktop="/Users/alswl/Desktop/"
 # }}}
 
 # virtual wrapper {{{
