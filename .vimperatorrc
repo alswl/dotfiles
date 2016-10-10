@@ -22,11 +22,11 @@ noremap h gT
 noremap l gt
 noremap s :stop<CR>
 
-noremap <leader>da :dialog addons<CR>
-" noremap <leader>p gT
-" noremap <leader>n gt
+noremap <leader>+ :open javascript:void((function(){var%20d=document,e=d.createElement(%22script%22);e.setAttribute(%22charset%22,%22UTF-8%22);e.setAttribute(%22src%22,%22http://www.duitang.com/js/core/no/collectit.js?%22+Math.floor(new%20Date/1E7));d.body.appendChild(e)})());<CR>
+
+noremap <leader>da :tabopen about:addons<CR>
 noremap <leader>dp :dialog preferences<CR>
-noremap <leader>dd :dialog downloads<CR>
+noremap <leader>dd :downloads<CR>
 noremap <leader>ds :dialog pagesource<CR>
 noremap <leader>dc :dialog console<CR>
 noremap <leader>di :dialog pageinfo<CR>
@@ -41,14 +41,23 @@ noremap b :bmarks
 " set titlestring=Mozilla\ Firefox
 
 "命令行下拉菜单最多显示的条目数
-set maxitems=6
+"set maxitems=6
 
 "Next Page and Previous Page超级的下一页,基本上是够用了.快捷键是[[和]]
 set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\bnext\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
 set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
 
+set gui=nonavigation
+
 "surround com and net可以直接先输入网站名,再用<CTRL>+<ENTER>快捷输入.com/.net
-cnoremap<S-Return> <End>.org<Home><C-Right><Right>www.<CR>
-cnoremap<C-Return> <End>.com<Home><C-Right><Right>www.<CR>
+"cnoremap<S-Return> <End>.org<Home><C-Right><Right>www.<CR>
+cnoremap<C-Return> <C-e>.com<CR>
+
+set 'editor=/bin/bash -lc "mvim -f \$*" mvim '
+set yankencodedurl=true
+
+" ignorekeys add https://www.toodledo.com/tasks/index.php
+" ignorekeys add http://www.toodledo.com/tasks/index.php
+" ignorekeys add https://mail.google.com/
 
 " vim: set ft=vim:

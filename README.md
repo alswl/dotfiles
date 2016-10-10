@@ -1,48 +1,51 @@
-# alswl's dot files #
+# Alswl's .oOo. #
 
-这里是我的 Linux 配置文件，有兴趣的可以参考，
+这里是我的 Mac OS 配置文件，有兴趣的可以参考。
+
+This is my Mac OS configuration.
+
+The old version of Linux is [here](https://github.com/alswl/.oOo./tree/ubuntu-final)
 
 目前的配置文件包括：
 
-* awesome
+* awesome # moved to [awesome][]
 * zsh
-* vim
+* vim # moved to [miv][]
 * vimperator
-* xmonad # suspend
-* xmobar # suspend
-* xsession
-* Xmodmap
+* Xmodmap # depleted
+* font
+* tmux / screen
+* xmonad # depleted
+* xmobar # depleted
+* xsession # depleted
+* .gitconfig
+* local/bin # svn diff / git diff / gbk unzip / speedfox
 
-我是一名 Python 程序员，同时也 code Javascript / html / css 。
-
-可以在 [Log4D][log4d] 这里找到我，这是我的博客。
-
-需要帮助的话，通过 `alswlx(at)gmail.com` 联系我。
-
-Note:
-
-Branche 'master' is for Arch Linux, branche 'vostro' is for Ubuntu 12.04.
-
-## Awesome Usage ##
+## Usage ##
 
 ``` bash
-git clone --recursive https://github.com/alswl/dotfiles.git
-ln -s /your/dotfiles/.config/awesome ~/.config
+git clone https://github.com/alswl/.oOo.
+ln -s /your/.oOo./.* ~/
+cp /your/.oOo./_.gitconfig ~/.gitconfig
+
+mkdir -p ~/local/bin && cd ~/local/bin
+ln -s /your/.oOo./local/bin/* .
 ```
 
-My Awesome config need many 3rd library, please make sure installed them.
-You should check the `~/.config/awesome/rc.lua`.
-
-## Vim Usage ##
-
-``` bash
-git clone --recursive https://github.com/alswl/dotfiles.git
-ln -s /your/dotfiles/.vim ~/.vim
-ln -s /your/dotfiles/.vimrc ~/.vimrc
-vim +BundleInstall # use vundle to install scripts
+use at cent os(linux):
+```
+git clone git@github.com:alswl/.oOo..git
+ZDOTDIR=/home/admin/ddd/.oOo./ zsh
+git checkout -b centos origin/centos
 ```
 
-Tips: `Bundle 'gmarik/vundle'` won't installed by vundle.
-Because it was cloned by git with `recursive` .
+## Related ##
 
-[log4d]: http://log4d.com/
+* [miv][] vim configuration
+* [awesome][] awesome configuration
+* [.oOo. mirror][] Mirror @ GitCafe
+
+[.oOo.]: https://github.com/alswl/.oOo.
+[.oOo. mirror]: https://gitcafe.com/alswl/.oOo.
+[awesome]: https://github.com/alswl/awesome
+[miv]: https://github.com/alswl/miv
