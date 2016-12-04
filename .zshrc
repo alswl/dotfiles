@@ -25,8 +25,8 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="powerline"
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="kolo"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="kolo"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -246,14 +246,13 @@ export LS_COLORS
 
 # LANG
 LANG="en_US.UTF-8"
-LC_COLLATE="zh_CN.UTF-8"
-LC_CTYPE="zh_CN.UTF-8"
-LC_MESSAGES="zh_CN.UTF-8"
-LC_MONETARY="zh_CN.UTF-8"
-LC_NUMERIC="zh_CN.UTF-8"
-LC_TIME="zh_CN.UTF-8"
-LC_ALL="zh_CN.UTF-8"
-
+#LC_COLLATE="zh_CN.UTF-8"
+#LC_CTYPE="zh_CN.UTF-8"
+#LC_MESSAGES="zh_CN.UTF-8"
+#LC_MONETARY="zh_CN.UTF-8"
+#LC_NUMERIC="zh_CN.UTF-8"
+#LC_TIME="zh_CN.UTF-8"
+LC_ALL="en_US.UTF-8"
 [[ -s /usr/share/source-highlight/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 [[ -s /usr/local/bin/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
