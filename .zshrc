@@ -161,7 +161,7 @@ if [ `uname` = 'Darwin' ]; then
 	alias -g C='| pbcopy'
 	alias -g P='pbpaste'
 fi
-alias -g H='http_proxy=http://127.0.0.1:8118 https_proxy=http://127.0.0.1:8118'
+alias -g H='http_proxy=http://192.168.250.1:8118 https_proxy=http://192.168.250.1:8118'
 alias girl='man'
 
 # }}}
