@@ -177,11 +177,7 @@ alias girl='man'
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
 hash -d dt="/Users/alswl/duitang/"
-hash -d japa="/Users/alswl/duitang/workspace/japa/"
-hash -d mandala="/Users/alswl/duitang/workspace/mandala/"
-hash -d faba="/Users/alswl/duitang/workspace/faba/"
-hash -d titan="/Users/alswl/duitang/workspace/titan/"
-hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
+hash -d hj="/Users/alswl/hj/"
 hash -d desktop="/Users/alswl/Desktop/"
 # }}}
 
