@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala autojump autoenv compleat urltools rvm npm vagrant go pip  bower fabric docker gem redis-cli rsync sbt screen sudo tmux colored-man)
+plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala autojump compleat urltools rvm npm vagrant go pip  bower fabric docker gem redis-cli rsync sbt screen sudo tmux colored-man)
 # virtualenvwrapper 
 
 source $ZSH/oh-my-zsh.sh
@@ -225,12 +225,12 @@ export LS_COLORS
 
 # LANG
 LANG="en_US.UTF-8"
-LC_COLLATE="zh_CN.UTF-8"
-LC_CTYPE="zh_CN.UTF-8"
-LC_MESSAGES="zh_CN.UTF-8"
-LC_MONETARY="zh_CN.UTF-8"
-LC_NUMERIC="zh_CN.UTF-8"
-LC_TIME="zh_CN.UTF-8"
-LC_ALL="zh_CN.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
 
 #. ~/dev/project/shell/powerline/powerline/bindings/zsh/powerline.zsh
