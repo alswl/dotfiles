@@ -8,20 +8,43 @@ The old version of Linux is [here](https://github.com/alswl/.oOo./tree/ubuntu-fi
 
 目前的配置文件包括：
 
-* awesome # moved to [awesome][]
-* zsh
-* vim # moved to [miv][]
-* vimperator
-* Xmodmap # depleted
-* font
-* tmux / screen
-* xmonad # depleted
-* xmobar # depleted
-* xsession # depleted
-* .gitconfig
-* local/bin # svn diff / git diff / gbk unzip / speedfox
+These configuration Includes: 
+
+*   awesome # moved to [awesome][]
+*   zsh
+*   vim # moved to [miv][]
+*   vimperator  # deprecated
+*   pentadactyl  # deprecated
+*   Vimium  # deprecated
+*   CVim  # deprecated
+*   VimFx  # deprecated
+*   Sufingkeys
+*   Xmodmap # deprecated
+*   font
+*   tmux / screen
+*   xmonad # deprecated
+*   xmobar # deprecated
+*   xsession # deprecated
+*   ideavimrc
+*   .gitconfig
+*   phoenix
+*   mjolnir # deprecated
+*   local/bin
+    *   svn diff
+    *   git diff
+    *   gbk unzip
+    *   speedfox
+    *   gh-md-toc
+    *   bing wallpaper downloader
+    *   rime dict manage
+    *   git proxy wrapper
+    *   url diff
+    *   viscosity to ios connect
+    *   etc.
+
 
 ## Usage ##
+
 
 ``` bash
 git clone https://github.com/alswl/.oOo.
@@ -43,9 +66,7 @@ git checkout -b centos origin/centos
 
 * [miv][] vim configuration
 * [awesome][] awesome configuration
-* [.oOo. mirror][] Mirror @ GitCafe
 
 [.oOo.]: https://github.com/alswl/.oOo.
-[.oOo. mirror]: https://gitcafe.com/alswl/.oOo.
 [awesome]: https://github.com/alswl/awesome
 [miv]: https://github.com/alswl/miv

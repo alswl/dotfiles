@@ -10,7 +10,6 @@ PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
 	#PATH=$p/bin:$PATH
 #done
 
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH
 # }}}
 
@@ -68,10 +67,18 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 if [ `uname` = 'Darwin' ]; then
-	export JAVA_HOME=`/usr/libexec/java_home`
+	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 fi
 
 [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
+
+# [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ] && source'/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+# [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+export GOPATH=$HOME/.gopath
+export HOMEBREW_NO_ANALYTICS=1
+export ANSIBLE_NOCOWS=1
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # personal script {{{
 [ -f $HOME/.personal.sh ] && . $HOME/.personal.sh
@@ -108,10 +115,12 @@ alias mem='free -m'
 alias less='less -i'
 alias rv='rview'
 alias dstat='dstat -cdlmnpsy'
-alias grep='grep --exclude-dir=".svn" --color=auto'
+alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
 alias tmux='tmux -2'
 alias g=git
 alias gc='git c'
+alias gci='git ci'
+alias gcv='git civ'
 alias gpl='git pl'
 alias gps='git ps'
 alias gspl='git spl'
@@ -119,7 +128,12 @@ alias gsps='git sps'
 alias gbr='git br'
 alias gf='git f'
 alias gs='git status'
+alias gnst='git number status'
+alias gdf='git df'
+alias gfuck='git reset --hard ORIG_HEAD && git clean -fd'
+alias gn='git number --column'
 alias v=vim
+alias vv=mvim
 alias mk=mkdir
 alias le=less
 alias psg='ps -ef | grep '
@@ -136,35 +150,38 @@ alias tarx='tar xzvf'
 alias tarc='tar czvf'
 alias e='echo'
 alias vh='sudo vi /etc/hosts'
-alias cnpm="npm --registry=https://registry.npm.taobao.org \
-	--cache=$HOME/.npm/.cache/cnpm \
-	--disturl=https://npm.taobao.org/dist \
-	--userconfig=$HOME/.cnpmrc"""
+alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
+alias fff='fuck'
 alias wo='workon'
 alias ta='tmux attach -t'
-alias gdf='git diff'
+alias k='kill'
+alias k9='kill -9 '
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
 alias -g H='| head'
-alias -g J='| json_pp | less'
+alias -g J='| jq . | less'
 alias -g W='| wc -l'
 alias -g V='| vim -'
 if [ `uname` = 'Darwin' ]; then
 	alias -g C='| pbcopy'
 	alias -g P='pbpaste'
 fi
+alias -g H='http_proxy=http://127.0.0.1:1235 https_proxy=http://127.0.0.1:1235'
+alias -g HG='GIT_PROXY_COMMAND=~/local/bin/socks5proxywrapper; GIT_SSH=~/local/bin/soks5proxyssh'
+alias girl='man'
 
 # }}}
 
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
 hash -d dt="/Users/alswl/duitang/"
-hash -d japa="/Users/alswl/duitang/workspace/japa/"
-hash -d mandala="/Users/alswl/duitang/workspace/mandala/"
-hash -d faba="/Users/alswl/duitang/workspace/faba/"
-hash -d titan="/Users/alswl/duitang/workspace/titan/"
-hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
+hash -d hj="/Users/alswl/hj/"
+hash -d desktop="/Users/alswl/Desktop/"
 # }}}
 
 # virtual wrapper {{{
@@ -175,6 +192,15 @@ hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
 # rvm {{{
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 # }}}
+
+# arc {{{
+[[ -s $HOME/local/arcanist/resources/shell/bash-completion ]] && source $HOME/local/arcanist/resources/shell/bash-completion
+# }}}
+
+# ansible {{{
+#[[ -s $HOME/local/ansible/hacking/env-setup ]] && source $HOME/local/ansible/hacking/env-setup -q
+# }}}
+
 
 # key binding {{{
 bindkey '\e.' insert-last-word
@@ -235,4 +261,8 @@ LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 
+[[ -s /usr/share/source-highlight/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+[[ -s /usr/local/bin/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+
 #. ~/dev/project/shell/powerline/powerline/bindings/zsh/powerline.zsh
+#eval "$(jenv init -)"
