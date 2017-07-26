@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# for HJ VPN
+
+/sbin/route add 192.168.18.0/24 -interface $1
+/sbin/route add 192.168.22.0/24 -interface $1
+/sbin/route add 192.168.40.0/24 -interface $1
+/sbin/route add 172.0.0.0/8 -interface $1
+/sbin/route add 10.0.0.0/8 -interface $1
