@@ -1,9 +1,19 @@
 #!/bin/sh
 
-# for HJ VPN
+# for hj vpn
+
+# wiki / jira
+#/sbin/route add 172.19.1.58 -interface $1
+# mis
+#/sbin/route add 172.21.1.72 -interface $1
+# lan
+#/sbin/route add 192.168.0.0/17 -interface $1
+# gitlab
+#/sbin/route add 192.168.22.66 -interface $1
 
 /sbin/route add 192.168.18.0/24 -interface $1
 /sbin/route add 192.168.22.0/24 -interface $1
+/sbin/route add 192.168.36.0/24 -interface $1
 /sbin/route add 192.168.40.0/24 -interface $1
 /sbin/route add 172.0.0.0/8 -interface $1
 /sbin/route add 10.0.0.0/8 -interface $1
