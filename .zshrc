@@ -5,12 +5,14 @@
 #done
 PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin/:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
+PATH=$PATH:/Library/TeX/texbin/
 
 #for p in `find /usr/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
 
 export PATH
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
 # }}}
 
 
@@ -115,7 +117,11 @@ alias mem='free -m'
 alias less='less -i'
 alias rv='rview'
 alias dstat='dstat -cdlmnpsy'
-alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
+if [ `uname` = 'Darwin' ]; then
+	alias grep='ggrep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
+else
+	alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
+fi
 alias tmux='tmux -2'
 alias g=git
 alias gc='git c'
@@ -160,6 +166,8 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/dist \
 --userconfig=$HOME/.cnpmrc"
+alias mssql='rlwrap mssql'
+alias scheme='rlwrap -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
@@ -172,7 +180,7 @@ if [ `uname` = 'Darwin' ]; then
 	alias -g P='pbpaste'
 fi
 alias -g H='http_proxy=http://127.0.0.1:1235 https_proxy=http://127.0.0.1:1235'
-alias -g HG='GIT_PROXY_COMMAND=~/local/bin/socks5proxywrapper; GIT_SSH=~/local/bin/soks5proxyssh'
+alias -g GP='GIT_PROXY_COMMAND=~/local/bin/socks5proxywrapper; GIT_SSH=~/local/bin/soks5proxyssh'
 alias girl='man'
 
 # }}}
@@ -181,7 +189,8 @@ alias girl='man'
 #hash -d WWW="/srv/http/" # use http instead
 hash -d dt="/Users/alswl/duitang/"
 hash -d hj="/Users/alswl/hj/"
-hash -d desktop="/Users/alswl/Desktop/"
+hash -d md="/Users/alswl/Desktop/md"
+hash -d d="/Users/alswl/Desktop/"
 # }}}
 
 # virtual wrapper {{{
@@ -195,6 +204,10 @@ hash -d desktop="/Users/alswl/Desktop/"
 
 # arc {{{
 [[ -s $HOME/local/arcanist/resources/shell/bash-completion ]] && source $HOME/local/arcanist/resources/shell/bash-completion
+# }}}
+
+# gitlab {{{
+[[ -s $HOME/.gitlabrc ]] && source $HOME/.gitlabrc
 # }}}
 
 # ansible {{{
