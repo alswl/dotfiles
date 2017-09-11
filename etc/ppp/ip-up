@@ -12,6 +12,7 @@
 #/sbin/route add 192.168.22.66 -interface $1
 
 /sbin/route add 192.168.18.0/24 -interface $1
+/sbin/route add 192.168.21.0/24 -interface $1
 /sbin/route add 192.168.22.0/24 -interface $1
 /sbin/route add 192.168.36.0/24 -interface $1
 /sbin/route add 192.168.40.0/24 -interface $1
