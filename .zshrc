@@ -72,6 +72,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export EDITOR=vim
+export RLWRAP_EDITOR="vim '+call cursor(%L,%C)'"
 if [ `uname` = 'Darwin' ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 fi
@@ -126,6 +127,7 @@ if [ `uname` = 'Darwin' ]; then
 else
 	alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
 fi
+alias ag='ag --pager "less -R"'
 alias tmux='tmux -2'
 alias g=git
 alias gc='git c'
@@ -159,7 +161,7 @@ alias f='find . -name '
 alias tarx='tar xzvf'
 alias tarc='tar czvf'
 alias e='echo'
-alias vh='sudo vi /etc/hosts'
+alias vh='sudo vim /etc/hosts'
 alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
 alias fff='fuck'
 alias wo='workon'
@@ -170,8 +172,8 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/dist \
 --userconfig=$HOME/.cnpmrc"
-alias mssql='rlwrap mssql'
-alias scheme='rlwrap -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
+alias rlmssql='rlwrap -n -a -c -S "mssql> " -f ~/local/etc/mssql_bindings.txt mssql'  # https://github.com/hasankhan/sql-cli
+alias rlscheme='rlwrap -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
@@ -194,7 +196,9 @@ alias girl='man'
 hash -d dt="/Users/alswl/duitang/"
 hash -d hj="/Users/alswl/hj/"
 hash -d md="/Users/alswl/Desktop/md"
-hash -d d="/Users/alswl/Desktop/"
+hash -d wl="/Users/alswl/Desktop/md/work-log"
+hash -d ib="/Users/alswl/Desktop/md/inbox"
+hash -d ib="/Users/alswl/Desktop/md/inbox"
 # }}}
 
 # virtual wrapper {{{
