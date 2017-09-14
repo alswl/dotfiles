@@ -5,11 +5,15 @@
 #done
 PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin/:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
-PATH=$PATH:/Library/TeX/texbin/
 
 #for p in `find /usr/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
+
+# for HJ
+for p in `find /home/soft/ -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
+	PATH=$p/bin:$PATH
+done
 
 export PATH
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
