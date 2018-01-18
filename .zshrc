@@ -12,12 +12,15 @@ PATH=$PATH:/Users/alswl/.virtualenvs/sys/bin/
 #done
 
 # for HJ
-for p in `find /home/soft/ -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
-	PATH=$p/bin:$PATH
-done
+if [[ -f /home/soft ]]; then
+	for p in `find /home/soft/ -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
+		PATH=$p/bin:$PATH
+	done
+fi
+
 
 export PATH
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
+#[ -f /usr/local/bin/python2 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
 # }}}
 
 
