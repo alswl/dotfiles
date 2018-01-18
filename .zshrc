@@ -5,6 +5,7 @@
 #done
 PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin/:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
+PATH=$PATH:/Users/alswl/.virtualenvs/sys/bin/
 
 #for p in `find /usr/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
@@ -56,9 +57,11 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala compleat urltools rvm npm vagrant go pip bower fabric docker gem redis-cli rsync sbt screen sudo tmux colored-man)
+plugins=(autojump aws bower brew-cask colored-man compleat django docker docker-compose fabric gem git git-flow go golang gradle history history-substring-search httpie mvn nmap npm pip python rvm redis-cli rsync sbt scala screen ssh-agent sudo svn thefuck tmux urltools vagrant virtualenvwrapper xcode zsh_reload adb nvm)
 [ -f /etc/redhat-release ] && plugins+=( yum )
-[ -f /etc/debian_version ] && plugins+=( apt-get )
+[ -f /etc/debian_version ] && plugins+=( pacman )
+[ -f /etc/arch-release ] && plugins+=( apt-get )
+[[ "$OSTYPE" == "darwin"* ]] && plugins+=( osx )
 # virtualenvwrapper 
 
 source $ZSH/oh-my-zsh.sh
@@ -74,10 +77,11 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export RLWRAP_EDITOR="vim '+call cursor(%L,%C)'"
 if [ `uname` = 'Darwin' ]; then
-	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+	export JAVA_HOME=`/usr/libexec/java_home -v 9`
 fi
 
-[ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
+#[ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
+#[ -f /usr/local/opt/nvm/nvm.sh ] && source /usr/local/opt/nvm/nvm.sh
 
 # [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ] && source'/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 # [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -157,7 +161,7 @@ alias screen='TERM=xterm-256color screen'
 alias s='sudo '
 alias vd='vimdiff'
 alias vdiff='vimdiff'
-alias f='find . -name '
+alias f=fd
 alias tarx='tar xzvf'
 alias tarc='tar czvf'
 alias e='echo'
@@ -172,12 +176,12 @@ alias cnpm="npm --registry=https://registry.npm.taobao.org \
 --cache=$HOME/.npm/.cache/cnpm \
 --disturl=https://npm.taobao.org/dist \
 --userconfig=$HOME/.cnpmrc"
-alias rlmssql='rlwrap -n -a -c -S "mssql> " -f ~/local/etc/mssql_bindings.txt mssql'  # https://github.com/hasankhan/sql-cli
-alias rlscheme='rlwrap -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
+alias rlmssql='rlwrap -n -i -a -c -S "mssql> " -f ~/local/etc/mssql_bindings.txt mssql'  # https://github.com/hasankhan/sql-cli
+alias rlscheme='rlwrap -i -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
-alias -g H='| head'
+#alias -g H='| head'
 alias -g J='| jq . | less'
 alias -g W='| wc -l'
 alias -g V='| vim -'
@@ -194,7 +198,7 @@ alias girl='man'
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
 hash -d dt="/Users/alswl/duitang/"
-hash -d hj="/Users/alswl/hj/"
+hash -d hj="/Users/alswl/hujiang/"
 hash -d md="/Users/alswl/Desktop/md"
 hash -d wl="/Users/alswl/Desktop/md/work-log"
 hash -d ib="/Users/alswl/Desktop/md/inbox"
