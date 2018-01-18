@@ -3,15 +3,20 @@
 #for p in `find $HOME/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin/:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
 
 #for p in `find /usr/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
 
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# for HJ
+for p in `find /home/soft/ -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
+	PATH=$p/bin:$PATH
+done
+
 export PATH
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
 # }}}
 
 
@@ -26,7 +31,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="powerline"
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="kolo"
+#ZSH_THEME="minial"
+ZSH_THEME="candy"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -50,7 +56,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump aws bower brew brew-cask colored-man compleat django docker docker-compose fabric gem git git-flow go golang gradle history history-substring-search httpie mvn nmap npm osx pip python rbenv redis-cli rsync rvm sbt scala screen ssh-agent sudo svn thefuck tmux urltools vagrant virtualenvwrapper xcode zsh_reload)
+plugins=(git python history history-substring-search git-flow svn django ssh-agent mvn scala compleat urltools rvm npm vagrant go pip bower fabric docker gem redis-cli rsync sbt screen sudo tmux colored-man)
+[ -f /etc/redhat-release ] && plugins+=( yum )
+[ -f /etc/debian_version ] && plugins+=( apt-get )
 # virtualenvwrapper 
 
 source $ZSH/oh-my-zsh.sh
@@ -64,15 +72,20 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 
 export EDITOR=vim
+export RLWRAP_EDITOR="vim '+call cursor(%L,%C)'"
 if [ `uname` = 'Darwin' ]; then
 	export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 fi
 
 [ -f ~/.nvm/nvm.sh ] && source ~/.nvm/nvm.sh
 
+# [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ] && source'/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+# [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ] && source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
 export GOPATH=$HOME/.gopath
 export HOMEBREW_NO_ANALYTICS=1
 export ANSIBLE_NOCOWS=1
+export ANDROID_HOME=/usr/local/opt/android-sdk
 
 # personal script {{{
 [ -f $HOME/.personal.sh ] && . $HOME/.personal.sh
@@ -109,7 +122,12 @@ alias mem='free -m'
 alias less='less -i'
 alias rv='rview'
 alias dstat='dstat -cdlmnpsy'
-alias grep='grep --exclude-dir=".svn" --color=auto'
+if [ `uname` = 'Darwin' ]; then
+	alias grep='ggrep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
+else
+	alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
+fi
+alias ag='ag --pager "less -R"'
 alias tmux='tmux -2'
 alias g=git
 alias gc='git c'
@@ -124,7 +142,7 @@ alias gf='git f'
 alias gs='git status'
 alias gnst='git number status'
 alias gdf='git df'
-alias gfuck='git reset --hard origin/master && git clean -fd'
+alias gfuck='git reset --hard ORIG_HEAD && git clean -fd'
 alias gn='git number --column'
 alias v=vim
 alias vv=mvim
@@ -143,13 +161,19 @@ alias f='find . -name '
 alias tarx='tar xzvf'
 alias tarc='tar czvf'
 alias e='echo'
-alias vh='sudo vi /etc/hosts'
+alias vh='sudo vim /etc/hosts'
 alias cnpm="npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc"
 alias fff='fuck'
 alias wo='workon'
 alias ta='tmux attach -t'
 alias k='kill'
 alias k9='kill -9 '
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+alias rlmssql='rlwrap -n -a -c -S "mssql> " -f ~/local/etc/mssql_bindings.txt mssql'  # https://github.com/hasankhan/sql-cli
+alias rlscheme='rlwrap -r -c -f ~/local/etc/mit_scheme_bindings.txt scheme'
 
 alias -g L='| less'
 alias -g G='| grep --color=auto'
@@ -161,7 +185,8 @@ if [ `uname` = 'Darwin' ]; then
 	alias -g C='| pbcopy'
 	alias -g P='pbpaste'
 fi
-alias -g H='http_proxy=http://192.168.250.1:8118 https_proxy=http://192.168.250.1:8118'
+alias -g H='http_proxy=http://127.0.0.1:1235 https_proxy=http://127.0.0.1:1235'
+alias -g GP='GIT_PROXY_COMMAND=~/local/bin/socks5proxywrapper; GIT_SSH=~/local/bin/soks5proxyssh'
 alias girl='man'
 
 # }}}
@@ -169,12 +194,11 @@ alias girl='man'
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
 hash -d dt="/Users/alswl/duitang/"
-hash -d japa="/Users/alswl/duitang/workspace/japa/"
-hash -d mandala="/Users/alswl/duitang/workspace/mandala/"
-hash -d faba="/Users/alswl/duitang/workspace/faba/"
-hash -d titan="/Users/alswl/duitang/workspace/titan/"
-hash -d nginx="/Users/alswl/duitang/workspace/nginx/"
-hash -d desktop="/Users/alswl/Desktop/"
+hash -d hj="/Users/alswl/hj/"
+hash -d md="/Users/alswl/Desktop/md"
+hash -d wl="/Users/alswl/Desktop/md/work-log"
+hash -d ib="/Users/alswl/Desktop/md/inbox"
+hash -d ib="/Users/alswl/Desktop/md/inbox"
 # }}}
 
 # virtual wrapper {{{
@@ -188,6 +212,10 @@ hash -d desktop="/Users/alswl/Desktop/"
 
 # arc {{{
 [[ -s $HOME/local/arcanist/resources/shell/bash-completion ]] && source $HOME/local/arcanist/resources/shell/bash-completion
+# }}}
+
+# gitlab {{{
+[[ -s $HOME/.gitlabrc ]] && source $HOME/.gitlabrc
 # }}}
 
 # ansible {{{
@@ -246,13 +274,14 @@ export LS_COLORS
 
 # LANG
 LANG="en_US.UTF-8"
-#LC_COLLATE="zh_CN.UTF-8"
-#LC_CTYPE="zh_CN.UTF-8"
-#LC_MESSAGES="zh_CN.UTF-8"
-#LC_MONETARY="zh_CN.UTF-8"
-#LC_NUMERIC="zh_CN.UTF-8"
-#LC_TIME="zh_CN.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
+
 [[ -s /usr/share/source-highlight/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 [[ -s /usr/local/bin/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
