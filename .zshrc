@@ -19,7 +19,7 @@ if [[ -f /home/soft ]]; then
 fi
 
 export PATH
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
+#[ -f /usr/local/bin/python2 ] && export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2  # for zsh plugin virtualenvwrapper
 # }}}
 
 
