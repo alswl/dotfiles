@@ -3,7 +3,8 @@
 #for p in `find $HOME/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin/:$PATH
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin:$PATH
+PATH=$HOME/.jenv/bin:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
 PATH=$PATH:/Users/alswl/.virtualenvs/sys/bin/
 
@@ -59,11 +60,15 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump aws bower brew-cask colored-man compleat django docker docker-compose fabric gem git git-flow go golang gradle history history-substring-search httpie mvn nmap npm pip python rvm redis-cli rsync sbt scala screen ssh-agent sudo svn thefuck tmux urltools vagrant virtualenvwrapper xcode zsh_reload adb nvm)
+plugins=( \
+	auadb autojump aws bower colored-man compleat django docker docker-compose fabric gem git git-flow go golang \
+	gradle history history-substring-search httpie mvn nmap npm nvm pip python redis-cli rsync rvm sbt scala \
+	screen ssh-agent sudo svn thefuck tmux urltools vagrant virtualenvwrapper xcode zsh_reload \
+	)
 [ -f /etc/redhat-release ] && plugins+=( yum )
+[ -f /etc/debian_version ] && plugins+=( apt-get debian ubuntu )
 [ -f /etc/debian_version ] && plugins+=( pacman )
-[ -f /etc/arch-release ] && plugins+=( apt-get )
-[[ "$OSTYPE" == "darwin"* ]] && plugins+=( osx )
+[[ "$OSTYPE" == "darwin"* ]] && plugins+=( osx brew brew-cask )
 # virtualenvwrapper 
 
 source $ZSH/oh-my-zsh.sh
@@ -199,12 +204,7 @@ alias girl='man'
 
 # 路径别名 {{{
 #hash -d WWW="/srv/http/" # use http instead
-hash -d dt="/Users/alswl/duitang/"
-hash -d hj="/Users/alswl/hujiang/"
-hash -d md="/Users/alswl/Desktop/md"
-hash -d wl="/Users/alswl/Desktop/md/work-log"
-hash -d ib="/Users/alswl/Desktop/md/inbox"
-hash -d ib="/Users/alswl/Desktop/md/inbox"
+#hash -d ib="/Users/alswl/Desktop/md/inbox"
 # }}}
 
 # virtual wrapper {{{
@@ -280,7 +280,6 @@ export LS_COLORS
 export LESSCHARSET=utf8
 
 # LANG
-LANG="en_US.UTF-8"
 LC_COLLATE="en_US.UTF-8"
 LC_CTYPE="en_US.UTF-8"
 LC_MESSAGES="en_US.UTF-8"
@@ -289,9 +288,18 @@ LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 
+#LANG="en_US.UTF-8"
+LANG="zh_CN.UTF-8"
+LANGUAGE="zh_CN.UTF-8"
+#SUPPORTED="zh_CN.UTF-8:zh_CN.GB18030:zh_CN.GB2312:zh_CN"
+#LANGUAGE="zh_CN.UTF-8:zh_CN.GB18030:zh_CN.GB2312:zh_CN"
+#SUPPORTED="zh_CN.UTF-8:zh_CN:zh"
+#SUPPORTED="zh_CN.UTF-8"
+
+
 [[ -s /usr/share/source-highlight/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 [[ -s /usr/bin/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
 [[ -s /usr/local/bin/src-hilite-lesspipe.sh ]] && export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
 #. ~/dev/project/shell/powerline/powerline/bindings/zsh/powerline.zsh
-#eval "$(jenv init -)"
+eval "$(jenv init -)"
