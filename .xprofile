@@ -1,0 +1,17 @@
+#!/bin/sh
+
+xrandr --output HDMI1 --brightness 0.85
+xset r rate 200 40
+
+xscreensaver -no-splash &
+numlockx &
+ibus-daemon -drx
+dropbox &
+copyq &
+xclip &
+albert &
+rescuetime &
+shutter --min_at_startup &
+
+exec awesome
+#exec i3
