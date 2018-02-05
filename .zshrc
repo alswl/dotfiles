@@ -3,7 +3,7 @@
 #for p in `find $HOME/local -maxdepth 1 -type d -exec test -d {}/bin \; -print`; do
 	#PATH=$p/bin:$PATH
 #done
-PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:/sbin:$PATH
+PATH=$HOME/local/bin:/usr/local/bin:/usr/local/sbin:$PATH
 PATH=$HOME/.jenv/bin:$PATH
 PATH=$PATH:/Users/alswl/Library/Python/2.7/bin
 PATH=$PATH:/Users/alswl/.virtualenvs/sys/bin/
