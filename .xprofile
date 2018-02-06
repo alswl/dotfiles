@@ -3,9 +3,14 @@
 xrandr --output HDMI1 --brightness 0.85
 xset r rate 200 40
 
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 xscreensaver -no-splash &
 numlockx &
-ibus-daemon -drx
+fcitx &
+#ibus-daemon -drx
 dropbox &
 copyq &
 xclip &
