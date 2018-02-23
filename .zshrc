@@ -135,7 +135,7 @@ alias rv='rview'
 alias dstat='dstat -cdlmnpsy'
 if [ `uname` = 'Darwin' ]; then
 	alias grep='ggrep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
-else
+elif [ `uname -s` = 'Linux' ] || [ `uname -o` = 'Cygwin' ]; then
 	alias grep='grep --exclude-dir=".git" --exclude-dir=".svn" --color=auto'
 fi
 alias ag='ag --pager "less -R"'
@@ -195,6 +195,7 @@ alias -g V='| vim -'
 if [ `uname` = 'Linux' ]; then
 	alias pbcopy='xclip -selection clipboard'
 	alias pbpaste='xclip -selection clipboard -o'
+	alias open='gnome-open'
 fi
 alias -g C='| pbcopy'
 alias -g P='pbpaste'
