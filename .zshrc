@@ -156,7 +156,11 @@ alias gdf='git df'
 alias gfuck='git reset --hard ORIG_HEAD && git clean -fd'
 alias gn='git number --column'
 alias v=vim
-alias vv=mvim
+if [ `uname` = 'Darwin' ]; then
+	alias vv=mvim
+elif [ `uname -s` = 'Linux' ] || [ `uname -o` = 'Cygwin' ]; then
+	alias vv=gvim
+fi
 alias mk=mkdir
 alias le=less
 alias psg='ps -ef | grep '
